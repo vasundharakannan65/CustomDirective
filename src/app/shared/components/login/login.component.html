@@ -1,0 +1,45 @@
+<div class="container p-2">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                  <h3 class="mb-0">Login</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="userForm" (ngSubmit)="login()">
+
+                        <!--EMAIL ID-->
+                        <div class="form-group">
+                        <label class="form-label">Email ID</label>
+                        <input type="text" formControlName="emailId" (emailValue)="validateEmail($event)"
+                        class="form-control" placeholder="Enter the Email ID" appEmailDirective/>
+                        <span *ngIf="!isEmailValid">
+                            Please enter valid email address!
+                        </span>
+                        </div> 
+
+                        <br/>
+
+                        <!--PASSWORD-->
+                        <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" formControlName="password" (passwordValue)="validatePassword($event)"
+                        class="form-control" maxlength="8" placeholder="Enter the password" appPassword/>
+                        <span *ngIf="!isPasswordValid">
+                            Please enter valid password!
+                        </span>
+                        </div>
+
+                        <br/>
+
+                        <div class=" card-footer text-center">
+                            <button class="btn btn-sm btn-primary mx-3" type="submit"
+                            [disabled]="submitted">Login</button>
+                            <button class="btn btn-sm btn-secondary" type="reset">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div> 
